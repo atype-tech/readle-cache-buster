@@ -1,0 +1,26 @@
+{
+  "name": "clear-cache",
+  "version": "1.0.0",
+  "description": "Script to clear Cloudflare Cache for Readle (dewenbao.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "readle-cache-purge": "bin/cache-purge"
+  },
+  "author": "Fershad Digital LTD",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.6",
+    "dotenv": "^9.0.2",
+    "eslint": "^7.24.0",
+    "esm": "^3.2.25",
+    "inquirer": "^8.0.0",
+    "node-fetch": "^2.6.1",
+    "ora": "^5.4.0",
+    "prettier": "^2.2.1"
+  }
+}
