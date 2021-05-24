@@ -1,5 +1,5 @@
 import arg from 'arg';
-import { purgeLabels, purgeWords } from './main';
+import { purgeLabels, purgeWords, purgeHomepageStories, purgeEverything } from './main';
 import inquirer from 'inquirer';
 
 function purgeWhat(rawArgs) {
@@ -23,7 +23,7 @@ async function promptForPurgeWhat(options) {
         type: 'list',
         name: 'function',
         message: 'What do you want to purge?',
-        choices: ['labels', 'words/MP3s']
+        choices: ['home screen stories', 'labels', 'words/MP3s', 'everything']
       });
     }
    
@@ -98,6 +98,20 @@ async function promptForPurgeWords(options) {
     };
    }
 
+async function confirmPurgeEverything() {
+    const questions = [];
+    
+      questions.push({
+        type: 'confirm',
+        name: 'confirm',
+        message: 'Purge everything in cache. Are you sure?',
+      });
+    
+   
+    const answers = await inquirer.prompt(questions);
+    return answers.confirm;
+   }
+
 export async function cli(args) {
     let operation = purgeWhat(args);
     operation = await promptForPurgeWhat(operation)
@@ -113,6 +127,13 @@ export async function cli(args) {
       options = await promptForPurgeWords(options)
 
       await purgeWords(options);
+      return
+    } else if (operation.function === "home screen stories") {
+      await purgeHomepageStories();
+      return
+    } else if (operation.function === "everything") {
+      const confirm = await confirmPurgeEverything();
+      if (confirm) { await purgeEverything() }
       return
     }
 //  let options = parseArgumentsIntoOptions(args);
