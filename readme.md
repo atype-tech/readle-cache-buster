@@ -12,7 +12,7 @@ A CLI tool that makes it easier to clear cached URLs for the Readle App.
     - Find your **Global API Key** and click view. Save it somewhere safe for the time being.
 
 ### Steps
-1. Clone this repo, and run `npm i` to install dependencies.
+1. Clone this repo, `cd` into the project folder and run `npm i` to install dependencies.
 2. In the root of this folder, create a `.env` file. Inside put the following variables:
    1. `CLOUDFLARE_ZONE_ID` - you'll find this on the dewenbao.com overview page.
    2. `CLOUDFLARE_API_KEY` - this is the Global API Key you copied earlier.
